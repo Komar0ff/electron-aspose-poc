@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Malware Detection</title>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/aa.jpg') }}" />
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/bootstrap.min.css') }}" />
+
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/owl.carousel.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/owl.theme.default.css') }}" />
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/magnific-popup.css') }}" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/font-awesome.min.css') }}" />
+
+	<!-- Custom stlylesheet -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/style.css') }}" />
+
+	<!-- FOR UPLOAD BUTTON -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:100,300'>
+
+    
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'css/styles.css') }}" />
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
+	<!--FINISH-->
+
+</head>
+
+<body>
+	<!-- Header -->
+	<header>
+		<nav id="nav" class="navbar">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<br>
+						<a href="{{ url_for('home') }}">
+							<h3 style="color:black;" class="logo">ARCSECURE</h3>
+							<!-- <h3 style="color:white;" class="logo-alt">ARCSECURE</h3> -->
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+			</div>
+		</nav>
+	</header>
+    <!-- /Header -->
+    
+    <div class="home-wrapper section p-3 bg-grey">
+        <div class="container">
+            
+            <div class="row mt-3 mb-3">
+                <div class="col-md-6">
+                    <h3>My Scans</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button class="btn btn-primary pr-3 pl-3">New Scan</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="scan-table">
+                        <table class="table table-striped table-bordered" style="width:100%" id="scanLogTable">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Size</td>
+                                    <td>Date</td>
+                                    <td>Status</td>
+                                </tr>
+                            </thead>
+                            <tbody id="scanTableData">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- Why Choose Us -->
+	<div>
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Back to top -->
+				<div id="back-to-top"></div>
+				<!-- /Back to top -->
+
+				<!-- Preloader -->
+				<div id="preloader">
+					<div class="preloader">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<!-- /Preloader -->
+
+
+
+
+				<!-- jQuery Plugins -->
+				<script src="{{ url_for('static', filename='js/axios.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js//owl.carousel.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+				<!-- <script src="{{ url_for('static', filename='js/index.js')}}"></script> -->
+
+                  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
+
+				<script>
+
+
+
+                    const tableCreator  = () => {
+                        const tableData = [
+                            {
+                                name: "Test Dummy",
+                                size: "0.2 mb",
+                                date: "01/09/2020",
+                                status: "Malicious"
+                            },
+                            {
+                                name: "Mal",
+                                size: "5 mb",
+                                date: "07/09/2020",
+                                status: "Malicious"
+                            },
+                            {
+                                name: "Safe Dummy",
+                                size: "2 mb",
+                                date: "09/09/2020",
+                                status: "Legitimate"
+                            },
+                            {
+                                name: "Safe",
+                                size: "2 mb",
+                                date: "10/09/2020",
+                                status: "Legitimate"
+                            },
+                            {
+                                name: "Mal Test",
+                                size: "2 mb",
+                                date: "10/09/2020",
+                                status: "Malicious"
+                            },
+                            {
+                                name: "Test",
+                                size: "2 mb",
+                                date: "10/09/2020",
+                                status: "Malicious"
+                            },
+                            {
+                                name: "Safe 2",
+                                size: "2 mb",
+                                date: "12/09/2020",
+                                status: "Legitimate"
+                            },
+                        ]
+
+                        let tableBody = ""
+                        tableData.map(data => {
+
+                            tableBody += `
+                            <tr>
+                                
+                                <td>${data.name}</td>
+                                <td>${data.size}</td>
+                                <td>${data.date}</td>
+                                <td><span class="${data.status == "Legitimate" ? "text-success" : "text-danger"}">${data.status}</span></td>
+
+                            </tr>
+                            `
+
+                        })
+
+                        document.querySelector("#scanTableData").innerHTML = tableBody
+
+                        $('#scanLogTable').DataTable();
+                    }
+
+					window.addEventListener('DOMContentLoaded', (event) => {
+                        console.log('DOM fully loaded and parsed');
+                        
+                        tableCreator()
+
+						console.log(`Doucment loaded`);
+
+					});
+				</script>
+
+
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

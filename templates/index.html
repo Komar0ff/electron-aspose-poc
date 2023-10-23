@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Malware Detection</title>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/aa.jpg') }}" />
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/bootstrap.min.css') }}" />
+
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/owl.carousel.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/owl.theme.default.css') }}" />
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/magnific-popup.css') }}" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/font-awesome.min.css') }}" />
+
+	<!-- Custom stlylesheet -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename ='css/style.css') }}" />
+
+	<!-- FOR UPLOAD BUTTON -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:100,300'>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename = 'css/styles.css') }}" />
+
+
+	<!--FINISH-->
+
+</head>
+
+<body>
+	<!-- Header -->
+	<header id="home">
+		<!-- Background Image -->
+		<div class="bg-img" style="background-image: url('{{ url_for('static',filename='./img/images.png')}}');">
+			<div class="overlay"></div>
+		</div>
+		<!-- /Background Image -->
+
+		<!-- Nav -->
+		<nav id="nav" class="navbar nav-transparent">
+			<div class="container">
+
+				<div class="navbar-header">
+					<!-- Logo -->
+					<div class="navbar-brand">
+						<br>
+						<a href="{{ url_for('home') }}">
+							<h3 style="color:black;" class="logo">ARCSECURE</h3>
+							<h3 style="color:white;" class="logo-alt">ARCSECURE</h3>
+						</a>
+					</div>
+					<!-- /Logo -->
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+			</div>
+		</nav>
+		<!-- /Nav -->
+
+		<!-- home wrapper -->
+		<div class="home-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+						<!-- home content -->
+
+						<div class="upload">
+							<form id="uploadForm">
+								<div class="upload-files" align="center">
+									<header>
+										<p>
+											<i class="fa fa-cloud-upload" aria-hidden="true"></i>
+											<span class="up">up</span>
+											<span class="load">load</span>
+										</p>
+									</header>
+									<div class="body" id="drop">
+										<i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+										<p class="pointer-none"><b>Drag and drop</b> files here <br /> or <a href=""
+												id="triggerFile">browse</a> to begin the upload</p>
+										<input id="uploadFile" type="file" name="file" multiple="multiple" />
+									</div>
+									<footer>
+										<div class="divider">
+											<span>
+												<AR>FILES</AR>
+											</span>
+										</div>
+										<div class="list-files">
+											<!--   template   -->
+										</div>
+										<button type="button" id="startDectection" class="importar">Start
+											Detection</button>
+									</footer>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- /home content -->
+
+
+					<div class="col-md-12">
+						<div class="card result-card">
+
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+		<!-- /home wrapper -->
+
+	</header>
+	<!-- /Header -->
+
+	<!-- Why Choose Us -->
+	<div id="features" class="section md-padding bg-grey">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- why choose us content -->
+				<div class="col-md-6">
+					<div class="section-header">
+						<h2 class="title">ARCSECURE</h2>
+					</div>
+					<p>Provides protection to your machine by classifying the file as Malicious or Legitimate.<br></p>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p>Upload your file here and see if the given executable is legitimate or malicious</p>
+					</div>
+
+				</div>
+
+
+				<!-- Back to top -->
+				<div id="back-to-top"></div>
+				<!-- /Back to top -->
+
+				<!-- Preloader -->
+				<div id="preloader">
+					<div class="preloader">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<!-- /Preloader -->
+
+
+
+
+				<!-- jQuery Plugins -->
+				<script src="{{ url_for('static', filename='js/axios.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js//owl.carousel.min.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/jquery.magnific-popup.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+				<script src="{{ url_for('static', filename='js/index.js')}}"></script>
+
+
+				<script>
+
+
+					const buildResultBody = (isMalicious = false) => {
+
+
+						const imgUrl = `${window.origin}/static/${isMalicious == false ? 'img/green_warning.png' : 'img/danger_warning.png'}`
+
+						const threatText = isMalicious == false ? 'No malware dectected' : 'Malware detected'
+						const threatSubtext = isMalicious == false ? 'This file is safe to execute' : 'Delete File Immediately'
+
+						const html = `
+
+	<div class="card-body">
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="result-image">
+			<img class="img-fluid"
+				src="${imgUrl}"
+				class="store-img" />
+		</div>
+	</div>
+	<div class="col-md-12">
+		<h1 class="display-4 mt-1 mb-0 ${isMalicious ? 'text-danger' : ''}">${threatText}</h1>
+		<h3 class="text-muted">${threatSubtext}</h3>
+	</div>
+</div>
+
+${(isMalicious == false) ? (
+								`
+
+		<div class="row mb-0 mt-4">
+			<div class="col-md-6">
+				<button type="button" class="btn btn-outline-primary w-100">View Logs</button>
+			</div>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-primary w-100">Run File</button>
+			</div>
+		</div>
+
+		`
+							) : (
+
+									`
+		<div class="row mb-0 mt-4">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<button type="button" class="btn btn-danger w-100">Delete File</button>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+
+		`
+								)
+
+							}
+
+</div>
+
+	`
+
+						return html
+					}
+
+					// const legitimatePrediction = () => {
+
+					// 	return buildResultBody(false)
+
+					// }
+
+					// const maliciPrediction = () => {
+
+					// 	return buildResultBody(false)
+
+					// }
+
+					window.addEventListener('DOMContentLoaded', (event) => {
+						console.log('DOM fully loaded and parsed');
+
+
+						// const resultView  =  document.querySelector('#results-view')
+						// resultView.
+
+						console.log(`Doucment loaded`);
+
+
+						function upload_file(formData) {
+
+
+
+							fetch('http://127.0.0.1:5000/predict', {
+								method: 'POST',
+								body: formData,
+							})
+								.then(response => response.json())
+								.then(result => {
+									console.log('Success:', result);
+
+									const prediction = result[0]['prediction']
+									// let result = ''
+									const isMalicious = prediction == 'malicious' ? true : false
+
+									const cardResult = buildResultBody(isMalicious)
+
+									document.querySelector('.result-card').innerHTML = cardResult
+
+								})
+								.catch(error => {
+									console.error('Error:', error);
+								});
+
+						}
+
+
+
+						document.querySelector("#startDectection").addEventListener("click", (e) => {
+
+							e.preventDefault()
+							console.log(e);
+							const uploadFile = document.querySelector('#uploadFile')
+							const formData = new FormData()
+							formData.append("file", uploadFile.files[0])
+
+							upload_file(formData)
+
+						})
+
+
+					});
+				</script>
+
+
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

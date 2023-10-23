@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>test app</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div>
+    <div style="text-align:center;">
+      <input type="text" placeholder="Please select a file" id="actual-file" disabled="disabled" />
+      <input type="button" value="Choose a file" id="select-file" />
+    </div>
+  </div>
+  <hr>
+  <script>
+    const { dialog } = require('electron').remote;
+    var fs = require('fs');
+    var FormData = require('form-data');
+
+    var java = require("java");
+    
+    var aspose = aspose || {};
+    aspose.diagram = require("aspose.diagram");
+
+    var diagram = new aspose.diagram.Diagram();
+
+    console.log('diagram', diagram)
+
+    document.getElementById('select-file').addEventListener('click', function () {
+      let dialogOptions = {
+        properties: ['openFile'],
+      };
+      let isDelete = true;
+      dialog.showOpenDialog(
+        dialogOptions
+      ).then((fileNames) => {
+        if (fileNames === undefined) {
+          console.log("No file selected");
+        } else {
+
+          console.log('file:', fileNames.filePaths[0]);
+          var filepath = fileNames.filePaths[0];
+
+          fs.readFile(filepath, (err, imageData) => {
+            if (err) {
+              throw err;
+            }
+            console.log(imageData)
+            const formData = new FormData();
+
+            console.log(fs.createReadStream(filepath));
+
+            formData.append("file", fs.createReadStream(filepath));
+
+            fetch('http://127.0.0.1:5000/api/upload', {
+              method: 'POST',
+              body: formData,
+            })
+              .then(response => response.json())
+              .then(result => {
+                console.log('Success:', result);
+
+                const prediction = result[0]['prediction']
+                // // let result = ''
+                const isMalicious = prediction == 'malicious' ? true : false
+
+                if (isMalicious) {
+                  deleteFile(filepath)
+                }
+
+                // const cardResult = buildResultBody(isMalicious)
+
+                // document.querySelector('.result-card').innerHTML = cardResult
+
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+          });
+        }
+      }).catch(err => console.log('Handle Error', err))
+    }, false);
+
+
+    function readFile(filepath) {
+      fs.readFile(filepath, 'utf-8', function (err, data) {
+        if (err) {
+          alert("An error ocurred reading the file :" + err.message);
+          return;
+        }
+
+        document.getElementById("content-editor").value = data;
+      });
+
+    }
+
+    function deleteFile(filepath) {
+      fs.exists(filepath, function (exists) {
+        if (exists) {
+          // File exists deletings
+          fs.unlink(filepath, function (err) {
+            if (err) {
+              alert("An error ocurred updating the file" + err.message);
+              console.log(err);
+              return;
+            }
+          });
+        } else {
+          alert("This file doesn't exist, cannot delete");
+        }
+      });
+    }
+
+    function upload_file() {
+
+
+    }
+  </script>
+</body>
+
+</html>
